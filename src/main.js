@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import App from './App'
 
+
+
 Vue.config.productionTip = false
 // mint ui 按需导入
 import {Header} from 'mint-ui'
