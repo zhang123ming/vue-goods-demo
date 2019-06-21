@@ -9,7 +9,7 @@
 npm install
 
 # serve with hot reload at localhost:8080
-npm run dev
+npm run dev 这是运行命令
 
 # build for production with minification
 npm run build 这是打包工具
