@@ -28,3 +28,8 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 ##点击tabbar 中的路由连接 展示对应的路由组件 
 ##加载首页轮播图图片数据 vue-resource 数据在body内部 判断body.status是否等于0
 ##制作nvbar 改造九宫格样式
+
+
+
+
+##https://github.com/zhang123ming/vue-goods-demo.git
