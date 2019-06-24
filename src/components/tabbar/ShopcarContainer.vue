@@ -1,17 +1,25 @@
 <template>
-  <div>这是shopcarContainer</div>
+  <div class="shopcar-container">
+    
+  </div>
 </template>
 
 <script>
+
 export default {
-  data () {
+  data() {
     return {
-    }
+   
+    };
+  },
+  components: {
+   
+  },
+  created() {
+    
   },
 
-  methods: {}
-}
-
+};
 </script>
 <style  scoped>
 </style>

@@ -23,7 +23,7 @@
           </p>
           <p>
             购买数量
-            <numbox  @getcount="getSelectedCount" :max="goodsinfo.stock_quantity"></numbox>
+            <numbox @getcount="getSelectedCount" :max="goodsinfo.stock_quantity"></numbox>
           </p>
 
           <p>
@@ -62,7 +62,7 @@ export default {
       goodsinfo: {}, //商品参数数据
       ballfalg: false,
       timer: null,
-      selectedCount:1,
+      selectedCount: 1
     };
   },
   components: {
@@ -80,8 +80,8 @@ export default {
   },
   methods: {
     getSelectedCount(count) {
-      this.selectedCount=count;
-      console.log(this.selectedCount)
+      this.selectedCount = count;
+      console.log(this.selectedCount);
     },
 
     spa() {
@@ -114,6 +114,15 @@ export default {
     // 添加购物车
     addToShopCard() {
       this.ballfalg = !this.ballfalg;
+      // 拼接出一个要保存store中car 数组里的商品的对象
+      var goodsinfo = {
+        id: this.id,
+        count: this.selectedCount,
+        price: this.goodsinfo.sell_price,
+        selected: true
+      };
+      // 调用store 中的muattions中的方法 将商品加入购物车
+     this.$store.commit("addToCar",goodsinfo);
     },
     //图文介绍 编程式导航
     goDesc(id) {

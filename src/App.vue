@@ -1,7 +1,12 @@
 <template>
   <div id="app">
     <!-- 顶部 -->
-    <mt-header fixed title="VUE--商城项目"></mt-header>
+    <mt-header fixed title="VUE--商城项目">
+      <span slot="left" v-show="flag">
+        <mt-button @click="goBack" icon="back">返回</mt-button>
+      </span>
+    </mt-header>
+
     <!-- 中间内容 -->
     <transition>
       <router-view></router-view>
@@ -18,7 +23,7 @@
       </router-link>
       <router-link class="mui-tab-item-llb" to="/shopcar">
         <span class="mui-icon mui-icon-extra mui-icon-extra-cart">
-          <span class="mui-badge" id="badge">0</span>
+          <span class="mui-badge" id="badge">{{$store.getters.getAllCount}}</span>
         </span>
         <span class="mui-tab-label">购物车</span>
       </router-link>
@@ -34,7 +39,34 @@
 import { Header } from "mint-ui";
 export default {
   name: "App",
-  components: {}
+  data() {
+    return {
+      flag: true
+    };
+  },
+  components: {},
+  methods: {
+    goBack() {
+      this.$router.go(-1);
+      console.log(this.$router);
+    }
+  },
+  created() {
+    if (this.$route.path === "/home") {
+      this.flag = false;
+    } else {
+      this.flag = true;
+    }
+  },
+  watch: {
+    "$route.path": function(newVal) {
+      if (newVal == "/home") {
+        this.flag = false;
+      } else {
+        this.flag = true;
+      }
+    }
+  }
 };
 </script>
 
@@ -43,7 +75,7 @@ export default {
   padding-top: 40px;
   overflow-x: hidden;
 }
-.mui-bar-tab a{
+.mui-bar-tab a {
   text-decoration: none;
 }
 .v-enter {
@@ -59,35 +91,35 @@ export default {
 .v-leave-active {
   transition: all 0.5s ease;
 }
- /* 该类名，解决 tabbar 点击无法切换的问题 */
+/* 该类名，解决 tabbar 点击无法切换的问题 */
 .mui-bar-tab .mui-tab-item-llb.mui-active {
-    color: #007aff;
+  color: #007aff;
 }
 
 .mui-bar-tab .mui-tab-item-llb {
-    display: table-cell;
-    overflow: hidden;
-    width: 1%;
-    height: 50px;
-    text-align: center;
-    vertical-align: middle;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    color: #929292;
+  display: table-cell;
+  overflow: hidden;
+  width: 1%;
+  height: 50px;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #929292;
 }
 
 .mui-bar-tab .mui-tab-item-llb .mui-icon {
-    top: 3px;
-    width: 24px;
-    height: 24px;
-    padding-top: 0;
-    padding-bottom: 0;
+  top: 3px;
+  width: 24px;
+  height: 24px;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
-.mui-bar-tab .mui-tab-item-llb .mui-icon~.mui-tab-label {
-    font-size: 11px;
-    display: block;
-    overflow: hidden;
-    text-overflow: ellipsis;
+.mui-bar-tab .mui-tab-item-llb .mui-icon ~ .mui-tab-label {
+  font-size: 11px;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 </style>
