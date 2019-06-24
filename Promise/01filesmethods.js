@@ -16,14 +16,9 @@ function getFileByPath(fpath, callback) {
   fs.readFile(fpath, 'utf-8', (err, dataStr) => {
     // 如果报错了，进入if分支后，if后面的代码就没有必要执行了
     if (err) return callback(err)
-    // console.log(dataStr)
-    // return dataStr
     callback(null, dataStr)
   })
 }
-
-/* var result = getFileByPath(path.join(__dirname, './files/1.txt'))
-console.log(result) */
 getFileByPath(path.join(__dirname, './files/11.txt'), (err, dataStr) => {
   // console.log(dataStr + '-----')
   if (err) return console.log(err.message)
